@@ -1,11 +1,12 @@
 package testAPI;
 
-import java.util.Set;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
+import org.bson.Document;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.*;
+
 
 /**
  * 
@@ -14,7 +15,7 @@ import com.mongodb.MongoClient;
  * Group 6
  * 
  * @authors HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya, TCHIDIME Hugues
- * @version 1.0
+ * @version 1.1
  * @since 2017-09-21
  * 
  * Class to test the connection with OFF dump with the API MongoDB Java Driver
@@ -25,29 +26,33 @@ public class JavaDriver {
 
 	public static void main(String[] args) {
 		// Connect to MongoDB server
-		MongoClient mongo = new MongoClient( "localhost" , 27017 );
+		MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
 		
-		// Display all collections from selected database
-		DB db = mongo.getDB("test");
-		Set<String> tables = db.getCollectionNames();
-	
-		for(String coll : tables){
-			System.out.println(coll);
+		// Access a Database "test"
+		MongoDatabase database = mongoClient.getDatabase("test");
+		
+		// Access a Collection "products"
+		MongoCollection<Document> collection = database.getCollection("products");
+
+		// Find the First Document in a Collection
+		Document myDoc = collection.find().first();
+		System.out.println(myDoc.toJson());
+		
+		// Get A Single Document That Matches a Filter where “pnns_groups_1=Beverages”
+		myDoc = collection.find(eq("pnns_groups_1", "Beverages")).first();
+		System.out.println(myDoc.toJson());
+		
+		// Get All Documents That Match a Filter where “pnns_groups_1=Beverages”
+		MongoCursor<Document> cursor = collection.find(gt("pnns_groups_1", "Beverages")).iterator();
+		try {
+		    while (cursor.hasNext()) {
+		        System.out.println(cursor.next().toJson());
+		    }
+		} finally {
+		    cursor.close();
 		}
 		
-		// Find document where “_id=20003470”, and display it with DBCursor
-		DBCollection table = db.getCollection("products");
-
-		BasicDBObject searchQuery = new BasicDBObject();
-		searchQuery.put("_id" , "20003470");
-
-		DBCursor cursor = table.find(searchQuery);
-
-		while (cursor.hasNext()) {
-			System.out.println(cursor.next());
-		}
-		
-		mongo.close();
+		mongoClient.close();
 
 	}
 }
