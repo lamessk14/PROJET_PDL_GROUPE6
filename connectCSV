@@ -1,0 +1,52 @@
+public class connectCSV {
+	
+	public static void main(String[] arguments) {
+
+		FileReader monFichier = null;
+		BufferedReader tampon = null;
+
+		try {
+		monFichier = new FileReader("C:\\off\\en.openfoodfacts.org.products.csv");
+		tampon = new BufferedReader(monFichier);
+		
+		int i =1 ; 
+		while (true) {
+			// Lit une ligne de test.csv
+			String ligne = tampon.readLine();
+			// Vérifie la fin de fichier
+			if (ligne == null )
+			break;
+			//String row [] = ligne.split("");
+			String [] row = ligne.split("	");	
+			if (i==1) {
+				System.out.println(ligne);
+				System.out.println(row[0]+"      |     "+row[7]+"                |               "+row[31]+"                     |                    "+row[30]+" |  "+row[34]+"     										|							   "+row[12]+" | "+row[14]+" | "+row[35]+" | "+row[53]);
+				
+			}
+			if (i>1 )  {
+				if (row[0].equals("3560070805259")) {
+						System.out.println(row[0]+" | "+row[7]+" |  "+row[31]+" |  "+row[30]+"  | "+row[34]+" |  "+row[12]+" | "+row[14]+" | "+row[35]+" | "+row[53]);
+				}
+				
+				if (row[0].equals("3567747050257")) {
+					System.out.println(row[0]+" | "+row[7]+" |  "+row[31]+" |  "+row[30]+"  | "+row[34]+" |  "+row[12]+" | "+row[14]+" | "+row[35]+" | "+row[53]);
+					
+				}
+				
+
+			}
+	
+			//System.out.println(ligne);
+			i++;
+		} // Fin du while	
+		} catch (IOException exception) {
+			exception.printStackTrace();
+		} finally {
+			try {
+				tampon.close();
+				monFichier.close();
+			} catch(IOException exception1) {
+				exception1.printStackTrace();
+			}
+		}
+		} // Fin de main 	
