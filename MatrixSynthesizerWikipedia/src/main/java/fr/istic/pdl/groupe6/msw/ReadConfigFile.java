@@ -25,7 +25,7 @@ public class ReadConfigFile {
 	List<String> listeAComparer =  new ArrayList<String>();
 	
 	public List<String> getList(){
-		String fichier ="src/main/java/fr/istic/pdl/groupe6/msw/config.json";
+		String fichier = "configFile.json";
 		try{
 	        InputStream ips=new FileInputStream(fichier);
 	        InputStreamReader ipsr=new InputStreamReader(ips);
