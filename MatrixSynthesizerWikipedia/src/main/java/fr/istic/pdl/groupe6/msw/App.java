@@ -1,6 +1,7 @@
 package fr.istic.pdl.groupe6.msw;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,8 +21,13 @@ public class App
 {
     public static void main( String[] args )
     {
-        ConfigFile configFile = new ConfigFile();
-        String search = configFile.getTitles();
+    	ReadConfigFile fileInPut = new ReadConfigFile();
+    	List<String> listeAComparer =  fileInPut.getList();
+    	TraitetementDisambiguation traitementFile = new TraitetementDisambiguation();
+    	traitementFile.getListPourComparaion(listeAComparer);    	
+    	
+//        ConfigFile configFile = new ConfigFile();
+//        String search = configFile.getTitles();
         
         ParserWikipedia parser = new ParserWikipedia();
 //        parser.searchWP("Cartagena");
