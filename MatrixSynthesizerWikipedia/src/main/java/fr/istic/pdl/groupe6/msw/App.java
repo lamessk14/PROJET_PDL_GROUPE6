@@ -1,4 +1,6 @@
-package fr.istic.pdl.groupe6.msw;
+package fr.istic.pdl.wms.groupe6.mediawikitest;
+
+import java.util.List;
 
 /**
  * 
@@ -16,15 +18,11 @@ package fr.istic.pdl.groupe6.msw;
 
 public class App 
 {
-    public static void main( String[] args )
-    {        
-        ConfigFile configFile = new ConfigFile();
-        String search = configFile.getTitles();
-        
-        ParserWikipedia parser = new ParserWikipedia();
-        parser.searchWP(search);
-        
-        //parser.getContentWP("5222");
-        
+	public static void main( String[] args )
+    {   
+    	ReadConfigFile fileInPut = new ReadConfigFile();
+    	List<String> listeAComparer =  fileInPut.getList();
+    	TraitetementDisambiguation traitementFile = new TraitetementDisambiguation();
+    	traitementFile.getListPourComparaion(listeAComparer);
     }
 }

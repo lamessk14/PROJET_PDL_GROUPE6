@@ -1,4 +1,4 @@
-package fr.istic.pdl.groupe6.msw;
+package fr.istic.pdl.wms.groupe6.mediawikitest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,10 +8,12 @@ import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.Iterator;
-
+import java.util.Map.Entry;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 /**
@@ -29,7 +31,13 @@ import com.google.gson.JsonParser;
  */
 
 public class ParserWikipedia {
-
+	
+	private HashMap<Integer, String> listePage;
+	private HashMap<Integer, String> listePageId;
+	private HashMap<Integer, String> listePages;
+	String search;
+	String idpage;
+	
 	private static String readAll(Reader rd) throws IOException {
 	    BufferedReader reader = new BufferedReader(rd);
 	    StringBuilder sb = new StringBuilder();
@@ -44,25 +52,35 @@ public class ParserWikipedia {
 	    String jsonString[] = keys.split("/");
 	    for (int i = 0; i < jsonString.length; i++) {
 	    	json = json.getAsJsonObject().get(jsonString[i]);
+	  
 	    }
 	    return json;
 	}
 	
-	public static String searchWP(String search) {
-		String url = "https://www.wikipedia.org/w/api.php?action=query&titles=" + search + "_(disambiguation)&prop=links&format=json";
-	    InputStream is = null;
+	
+	
+	public String getPageId(String search) {
+		
+		String url = "https://en.wikipedia.org/w/api.php?action=query&titles=" + search + "&prop=links&format=json";
+		
+		InputStream is = null;
 	    try {
 	        is = new URL(url).openStream();
 	        BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 	        String jsonText = readAll(rd);
+
+	        //JsonElement rootObj = new JsonParser().parse(jsonText);
+	        //String idpage = "10710961"; // Il faut récupérer la clé
+	        
+	        
 	        JsonElement rootObj = new JsonParser().parse(jsonText);
-	        String idpage = "10710961"; // Il faut récupérer la clé
-	        JsonElement disambiguation = getValues(rootObj, "query/pages/" + idpage + "/links/");
-	        JsonArray msg = (JsonArray) disambiguation;
-	        Iterator<JsonElement> iterator = msg.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(getValues(iterator.next(), "title").getAsString());
-            }
+	        idpage = null; // TODO Il faut récupérer la clé
+	        
+	        JsonElement disambiguation1 = getValues(rootObj, "query/pages/");      
+	        JsonObject root = disambiguation1.getAsJsonObject();
+	        for (Entry<String, JsonElement> e : root.entrySet()) {
+	            idpage = e.getKey();
+	        }
 	    } catch (MalformedURLException e) {
 	        e.printStackTrace();
 	    } catch (IOException e) {
@@ -76,10 +94,76 @@ public class ParserWikipedia {
 	        }
 	    }
 		
-		return null;
+		return idpage;
 	}
 	
-	public static String getContentWP(String pageid) {
+	
+	public  HashMap<Integer, String> searchWP(String search) {
+		String url = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + search + "&format=json";
+	    InputStream is = null;
+	    try {
+	        is = new URL(url).openStream();
+	        BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+	        String jsonText = readAll(rd);
+	        JsonElement rootObj = new JsonParser().parse(jsonText);
+	        
+
+	        JsonElement disambiguation = getValues(rootObj, "query/search/");
+	      //System.out.println(disambiguation);
+	        JsonArray msg = (JsonArray) disambiguation;
+	       
+	        Iterator<JsonElement> iterator = msg.iterator();
+	        
+	        //valeur numérique 
+	        int i=0;
+	        String pageName;
+	        String pageId;
+	        //HasMap : pour récupérer la liste des pages
+	        listePage = new HashMap<Integer, String>();
+	        listePageId = new HashMap<Integer, String>();
+	        listePages = new HashMap<Integer, String>();
+	        while (iterator.hasNext()) {
+	        	//recupère chaque page ambigu
+	        	pageName= getValues(iterator.next(), "title").getAsString();
+	        	//Ajout dans un HashMap
+            	listePage.put(i, pageName);
+            	//affichage de la liste des pages
+                System.out.println(i+" "+pageName);
+                i++;
+            }
+	        
+	        int j=0;
+	        Iterator<JsonElement> iterator1 = msg.iterator();
+	        while (iterator1.hasNext()) {
+	        	//recupère chaque page ambigu
+	        	pageId= getValues(iterator1.next(), "pageid").getAsString();
+	        	//Ajout dans un HashMap
+	        	listePageId.put(j, pageId);
+            	//affichage de la liste des pages
+                //System.out.println(j+" "+pageId);
+                j++;
+            }
+	        
+	        listePages.putAll(listePage);
+	        listePages.putAll(listePageId);
+            
+	    } catch (MalformedURLException e) {
+	        e.printStackTrace();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (is != null)
+	                is.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+		
+		return listePages;
+	}
+	
+	public  String getContentWP(String pageid) {
 		String url = "https://www.wikipedia.org/w/api.php?action=query&pageids=" + pageid + "&prop=revisions&rvprop=content&rvsection=0&format=json";
 	    InputStream is = null;
 	    try {
