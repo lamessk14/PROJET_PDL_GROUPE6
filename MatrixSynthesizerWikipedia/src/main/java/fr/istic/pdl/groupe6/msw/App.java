@@ -1,5 +1,8 @@
 package fr.istic.pdl.groupe6.msw;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * 
  * PDL MIAGE 1718
@@ -13,18 +16,31 @@ package fr.istic.pdl.groupe6.msw;
  * 
  * 
  */
-
 public class App 
 {
     public static void main( String[] args )
-    {        
+    {
         ConfigFile configFile = new ConfigFile();
         String search = configFile.getTitles();
         
         ParserWikipedia parser = new ParserWikipedia();
-        parser.searchWP(search);
+//        parser.searchWP("Cartagena");
         
-        //parser.getContentWP("5222");
+        Map<String, String> map1 = parser.getContentWP("5222");
+//        System.out.println(map1);
+        Map<String, String> map2 = parser.getContentWP("5843419");
+//        System.out.println(map2);
+        
+        Map<Integer, Map> comp = new LinkedHashMap<Integer, Map>();
+        
+        assert(map1.isEmpty());
+        comp.put(5222, map1);
+        comp.put(5843419, map2);
+        
+        Compare compare = new Compare();
+        System.out.println(compare.getIntersection(comp));
+        System.out.println("Paramètre en commun = " + compare.getIntersection(comp).size());
+        System.out.println("% de coïncidence = " + compare.getPercentageMatch(comp));
         
     }
 }

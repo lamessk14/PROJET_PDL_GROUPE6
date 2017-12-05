@@ -18,8 +18,8 @@ public class ConfigFile {
 	
 	public String getTitles() {
 		System.out.print( "Loading configuration file..." );
-		// ADD ME THE CODE TO LOAD THE FILE
-		System.out.println( "    File loaded successfully." );
+		// TODO Add the code load the config file
+		System.out.println( "    File loaded successfully.\n" );
 		return "Colombia";
 	}
 
