@@ -10,11 +10,11 @@ import junit.framework.TestSuite;
  * Project #3 (MatrixSynthesizerWikipedia)
  * Group 6
  * 
- * @authors HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya, TCHIDIME Hugues
+ * @authors HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya, TCHIDIME Hugues, NGOUALEM Alvine
  * @version 1.0
  * @since 2017-10-31
  * 
- * Unit test for simple App.
+ * 
  * 
  */
 
