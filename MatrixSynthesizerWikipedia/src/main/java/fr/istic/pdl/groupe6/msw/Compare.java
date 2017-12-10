@@ -8,107 +8,174 @@ import java.util.Set;
 
 /**
  * 
- * PDL MIAGE 1718
- * Project #3 (MatrixSynthesizerWikipedia)
- * Group 6
+ * PDL MIAGE 1718, Project #3 (MatrixSynthesizerWikipedia), Group 6
  * 
- * @authors HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya, TCHIDIME Hugues, NGOUALEM Alvine
+ * @author HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya,
+ *         TCHIDIME Hugues, NGOUALEM Alvine
  * @version 1.0
  * @since 2017-10-31
  * 
- * 
+ *        Class that checks
  * 
  */
 
 public class Compare {
-	
-	public boolean checkProperties(Map<Integer, Map> comp) {
-        Iterator it = comp.keySet().iterator();
-        while(it.hasNext()){
-        	int key = (Integer) it.next();
-        	//System.out.println(key + "->" + comp.get(key));
-//        	assert comp.get(key).isEmpty();
-	        if(comp.get(key).isEmpty()) {
-	        	System.out.println("Error: infobox is empty");
-	        }
-        	if(!comp.get(key).containsKey("infobox")) {
-        		return false;
-        	}
-        }
-        return true;
-	}	
-	
+
+	/**
+	 * Method that checks if all infobox are not empty
+	 * 
+	 * @param comp
+	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            parameters of infobox
+	 * @return res Return true if all infobox are not empty
+	 */
+	public boolean checkInfoboxContent(Map<Integer, Map> comp) {
+		Iterator<Integer> it = comp.keySet().iterator();
+		boolean res = true;
+		while (it.hasNext()) {
+			int key = (Integer) it.next();
+			// assert comp.get(key).isEmpty();
+			if (comp.get(key).isEmpty()) {
+				res = false;
+				return res;
+			}
+		}
+		return res;
+	} // TODO make test
+
+	/**
+	 * Method that checks if each element has the infobox parameter
+	 * 
+	 * @param comp
+	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            parameters of infobox
+	 * @return res True for each element if it contains the infobox parameter
+	 */
 	public Map<Integer, Boolean> checkParameterInfobox(Map<Integer, Map> comp) {
-		Map<Integer, Boolean> res = new LinkedHashMap<Integer, Boolean>(); 
-        Iterator it = comp.keySet().iterator();
-        while(it.hasNext()){
-        	int key = (Integer) it.next();
-        	if(comp.get(key).containsKey("infobox")) {
-        		res.put(key, true);
-        	} else {
-        		res.put(key, true);
-        	}
-        }
-        return res;
+		Map<Integer, Boolean> res = new LinkedHashMap<Integer, Boolean>();
+		Iterator<Integer> it = comp.keySet().iterator();
+		while (it.hasNext()) {
+			int key = (Integer) it.next();
+			if (comp.get(key).containsKey("infobox")) {
+				res.put(key, true);
+			} else {
+				res.put(key, true);
+			}
+		}
+		return res;
 	}
-	
+
+	/**
+	 * Method that checks if all elements have the infobox parameter
+	 * 
+	 * @param comp
+	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            parameters of infobox
+	 * @return res True for all elements have the infobox parameter
+	 */
+	public boolean checkAllParameterInfobox(Map<Integer, Map> comp) {
+		boolean res = true;
+		Iterator<Integer> it = comp.keySet().iterator();
+		while (it.hasNext()) {
+			int key = (Integer) it.next();
+			if (!comp.get(key).containsKey("infobox")) {
+				res = false;
+				return res;
+			}
+		}
+		return res;
+	} // TODO add test
+
+	/**
+	 * Method that return the infobox parametre for each element
+	 * 
+	 * @param comp
+	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            parameters of infobox
+	 * @return res Map<Integer, String>, Key = pageid, Value = content of infobox
+	 *         parameter
+	 */
 	public Map<Integer, String> getContentParameterInfobox(Map<Integer, Map> comp) {
-		Map<Integer, String> res = new LinkedHashMap<Integer, String>(); 
-        Iterator it = comp.keySet().iterator();
-        while(it.hasNext()){
-        	int key = (Integer) it.next();
-        	res.put(key, (String) comp.get(key).get("infobox"));
-        }
-        return res;
+		Map<Integer, String> res = new LinkedHashMap<Integer, String>();
+		Iterator<Integer> it = comp.keySet().iterator();
+		while (it.hasNext()) {
+			int key = (Integer) it.next();
+			res.put(key, (String) comp.get(key).get("infobox"));
+		}
+		return res;
 	}
-	
+
+	/**
+	 * Method that return the number of parameter for each infobox
+	 * 
+	 * @param comp
+	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            parameters of infobox
+	 * @return res Map<Integer, Integer>, Key = pageid, Value = number of parameters
+	 */
 	public Map<Integer, Integer> getNumParametres(Map<Integer, Map> comp) {
-		Map<Integer, Integer> res = new LinkedHashMap<Integer, Integer>(); 
-        Iterator it = comp.keySet().iterator();
-        while(it.hasNext()){
-        	int key = (Integer) it.next();
-        	res.put(key, comp.get(key).size());
-        }
-        return res;
+		Map<Integer, Integer> res = new LinkedHashMap<Integer, Integer>();
+		Iterator<Integer> it = comp.keySet().iterator();
+		while (it.hasNext()) {
+			int key = (Integer) it.next();
+			res.put(key, comp.get(key).size());
+		}
+		return res;
 	}
-	
+
+	/**
+	 * Method that returns the parameters in common between all elements
+	 * 
+	 * @param comp
+	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            parameters of infobox
+	 * @return res Parameter in common
+	 */
 	public Set<String> getIntersection(Map<Integer, Map> comp) {
 		Set<String> res = new LinkedHashSet<String>();
 		boolean bool = true;
-        Iterator it = comp.keySet().iterator();
-        while(it.hasNext()){
-        	int key = (Integer) it.next();
-        	Set<String> cur = comp.get(key).keySet();
-        	if(bool) {
-        		for(String cle : cur) {
-            		res.add(cle);
-            	}
-        		bool = false;
-        	}
-        	
-        	Set<String> prob = new LinkedHashSet<String>();
-        	for(String cle : res) {
-        		prob.add(cle);
-        	}
-    		for(String cle : prob) {
-    			if(!cur.contains(cle)) {
-    				res.remove(cle);
-    			} else {
-    				res.add(cle);
-    			}
-            }
-        }
-        return res;
+		Iterator<Integer> it = comp.keySet().iterator();
+		while (it.hasNext()) {
+			int key = (Integer) it.next();
+			Set<String> cur = comp.get(key).keySet();
+			if (bool) {
+				for (String cle : cur) {
+					res.add(cle);
+				}
+				bool = false;
+			}
+
+			Set<String> prob = new LinkedHashSet<String>();
+			for (String cle : res) {
+				prob.add(cle);
+			}
+			for (String cle : prob) {
+				if (!cur.contains(cle)) {
+					res.remove(cle);
+				} else {
+					res.add(cle);
+				}
+			}
+		}
+		return res;
 	}
-	
+
+	/**
+	 * Method that calculates the match percentage between the elements
+	 * 
+	 * @param comp
+	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            parameters of infobox
+	 * @return res Match percentage
+	 */
 	public float getPercentageMatch(Map<Integer, Map> comp) {
 		float inter = getIntersection(comp).size();
 		float avg = 0;
-		Iterator it = comp.keySet().iterator();
-        while(it.hasNext()){
-        	int key = (Integer) it.next();
-        	avg += comp.get(key).size();
-        }
-        return inter * comp.size() / avg;	
-	}
+		Iterator<Integer> it = comp.keySet().iterator();
+		while (it.hasNext()) {
+			int key = (Integer) it.next();
+			avg += comp.get(key).size();
+		}
+		return inter * comp.size() / avg;
+	} // TODO add test
 }

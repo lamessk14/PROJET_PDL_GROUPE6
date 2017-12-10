@@ -9,11 +9,10 @@ import java.util.List;
 
 /**
  * 
- * PDL MIAGE 1718
- * Project #3 (MatrixSynthesizerWikipedia)
- * Group 6
+ * PDL MIAGE 1718, Project #3 (MatrixSynthesizerWikipedia), Group 6
  * 
- * @authors HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya, TCHIDIME Hugues, NGOUALEM Alvine
+ * @author HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya,
+ *         TCHIDIME Hugues, NGOUALEM Alvine
  * @version 1.0
  * @since 2017-10-31
  * 
@@ -22,25 +21,24 @@ import java.util.List;
  */
 
 public class ReadConfigFile {
-	List<String> listeAComparer =  new ArrayList<String>();
-	
-	public List<String> getList(){
+	List<String> listeAComparer = new ArrayList<String>();
+
+	public List<String> getList() {
 		String fichier = "configFile.json";
-		try{
-	        InputStream ips=new FileInputStream(fichier);
-	        InputStreamReader ipsr=new InputStreamReader(ips);
-	        BufferedReader br=new BufferedReader(ipsr);
-	        String ligne;
-	        while ((ligne=br.readLine())!=null){
-	           listeAComparer.add(ligne);
-	          
-	        }
-	        
-	        br.close();
-	     }    
-	     catch (Exception e){
-	        System.out.println(e.toString());
-	     }
-	     return listeAComparer;
-	} 
+		try {
+			InputStream ips = new FileInputStream(fichier);
+			InputStreamReader ipsr = new InputStreamReader(ips);
+			BufferedReader br = new BufferedReader(ipsr);
+			String ligne;
+			while ((ligne = br.readLine()) != null) {
+				listeAComparer.add(ligne);
+
+			}
+
+			br.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return listeAComparer;
+	}
 }

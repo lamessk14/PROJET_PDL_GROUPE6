@@ -9,11 +9,10 @@ import java.util.List;
 
 /**
  * 
- * PDL MIAGE 1718
- * Project #3 (MatrixSynthesizerWikipedia)
- * Group 6
+ * PDL MIAGE 1718, Project #3 (MatrixSynthesizerWikipedia), Group 6
  * 
- * @authors HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya, TCHIDIME Hugues, NGOUALEM Alvine
+ * @author HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya,
+ *         TCHIDIME Hugues, NGOUALEM Alvine
  * @version 1.0
  * @since 2017-10-31
  * 
@@ -22,41 +21,46 @@ import java.util.List;
  */
 
 public class ConfigFile {
-	 String pageName;
-	 List<String> listeAComparer =  new ArrayList<String>();
-	 
+	String pageName;
+	List<String> listeAComparer = new ArrayList<String>();
+
+	/**
+	 * TODO
+	 */
 	public ConfigFile(String pageName) {
 		this.pageName = pageName;
 	}
-	
+
+	/**
+	 * TODO
+	 */
 	public String getTitles() {
-		System.out.print( "Loading configuration file..." );
+		System.out.print("Loading configuration file...");
 		// ADD ME THE CODE TO LOAD THE FILE
-		System.out.println( "    File loaded successfully." );
+		System.out.println("    File loaded successfully.");
 		return this.pageName;
 	}
-	
+
 	/**
 	 * retourne une liste de PageName
-	 * @return 
-	 * 			listeAComparer
+	 * 
+	 * @return listeAComparer
 	 */
-	public List<String> getList(){
-		String fichier ="E:\\config.json";
-		try{
-	        InputStream ips=new FileInputStream(fichier);
-	        InputStreamReader ipsr=new InputStreamReader(ips);
-	        BufferedReader br=new BufferedReader(ipsr);
-	        String ligne;
-	        while ((ligne=br.readLine())!=null){
-	           listeAComparer.add(ligne);
-	        }
-	        br.close();
-	     }    
-	     catch (Exception e){
-	        System.out.println(e.toString());
-	     }
-	     return listeAComparer;
-	} 
+	public List<String> getList() {
+		String fichier = "E:\\config.json";
+		try {
+			InputStream ips = new FileInputStream(fichier);
+			InputStreamReader ipsr = new InputStreamReader(ips);
+			BufferedReader br = new BufferedReader(ipsr);
+			String ligne;
+			while ((ligne = br.readLine()) != null) {
+				listeAComparer.add(ligne);
+			}
+			br.close();
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return listeAComparer;
+	}
 
 }
