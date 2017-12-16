@@ -16,7 +16,7 @@ import java.util.Scanner;
  * @version 1.0
  * @since 2017-10-31
  * 
- * 
+ *        Class for checking wikipedia's disambiguation
  * 
  */
 

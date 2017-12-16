@@ -65,7 +65,12 @@ public class ParserWikidata {
 	}
 
 	/**
-	 * TODO
+	 * Method for reading character streams
+	 * 
+	 * @param rd
+	 * 			character-stream to read
+	 * @return sb
+	 * 			json String
 	 */
 	private static String readAll(Reader rd) throws IOException {
 		BufferedReader reader = new BufferedReader(rd);
@@ -78,7 +83,14 @@ public class ParserWikidata {
 	}
 
 	/**
-	 * TODO
+	 * Method for getting values of a Json object like directory
+	 * 
+	 * @param json
+	 * 			Json object to read
+	 * @param keys
+	 * 			Keys to search
+	 * @return json
+	 * 			Value of the key
 	 */
 	private static JsonElement getValues(JsonElement json, String keys) {
 		String jsonString[] = keys.split("/");
@@ -177,13 +189,5 @@ public class ParserWikidata {
 		String value = getValues(rootObj, "entities/" + id + "/labels/en/value").toString();
 		return value;
 	}
-
-//	public static void main(String[] arg) {
-//		System.out.println("************");
-//		// searchWD("Colombia");
-//		System.out.println("************");
-//		
-//		System.out.println(getContentWD("Q142"));
-//		System.out.println("************");
-//	}
+	
 }

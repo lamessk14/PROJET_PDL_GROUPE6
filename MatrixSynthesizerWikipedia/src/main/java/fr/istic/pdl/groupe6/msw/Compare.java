@@ -15,7 +15,7 @@ import java.util.Set;
  * @version 1.0
  * @since 2017-10-31
  * 
- *        Class that checks
+ *        Class for checking the coincidence between elements
  * 
  */
 

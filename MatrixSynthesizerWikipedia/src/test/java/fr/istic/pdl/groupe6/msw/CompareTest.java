@@ -27,6 +27,8 @@ import fr.istic.pdl.groupe6.msw.Compare;
 public class CompareTest {
 
 	/**
+	 * Method for testing checkParameterInfobox()
+	 * 
 	 * @param m1
 	 *            premier infobox
 	 * @param m2
@@ -54,6 +56,8 @@ public class CompareTest {
 	}
 
 	/**
+	 * Method for testing checkParameterInfobox()
+	 * 
 	 * @param m1
 	 *            premier infobox
 	 * @param m2
@@ -86,7 +90,7 @@ public class CompareTest {
 	}
 
 	/**
-	 * TODO
+	 * Method for testing getContentParameterInfobox()
 	 */
 	@Test
 	public void testGetContentParameterInfobox1() {
@@ -107,7 +111,7 @@ public class CompareTest {
 	}
 
 	/**
-	 * TODO
+	 * Method for testing getNumParametres()
 	 */
 	@Test
 	public void testGetNumParametres() {
@@ -136,7 +140,7 @@ public class CompareTest {
 	}
 
 	/**
-	 * TODO
+	 * Method for testing getIntersection()
 	 */
 	@Test
 	public void testGetIntersection1() {
@@ -165,7 +169,7 @@ public class CompareTest {
 	}
 
 	/**
-	 * TODO
+	 * Method for testing getIntersection()
 	 */
 	@Test
 	public void testGetIntersection2() {
@@ -193,7 +197,7 @@ public class CompareTest {
 	}
 
 	/**
-	 * TODO
+	 * Method for testing getIntersection()
 	 */
 	@Test
 	public void testGetIntersection3() {

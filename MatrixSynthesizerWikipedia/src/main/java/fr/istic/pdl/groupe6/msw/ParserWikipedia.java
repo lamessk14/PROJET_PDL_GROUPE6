@@ -41,7 +41,12 @@ public class ParserWikipedia {
 	String idpage;
 
 	/**
-	 * TODO
+	 * Method for reading character streams
+	 * 
+	 * @param rd
+	 * 			character-stream to read
+	 * @return sb
+	 * 			json String
 	 */
 	private static String readAll(Reader rd) throws IOException {
 		BufferedReader reader = new BufferedReader(rd);
@@ -54,7 +59,14 @@ public class ParserWikipedia {
 	}
 
 	/**
-	 * TODO
+	 * Method for getting values of a Json object like directory
+	 * 
+	 * @param json
+	 * 			Json object to read
+	 * @param keys
+	 * 			Keys to search
+	 * @return json
+	 * 			Value of the key
 	 */
 	private static JsonElement getValues(JsonElement json, String keys) {
 		String jsonString[] = keys.split("/");
@@ -169,7 +181,12 @@ public class ParserWikipedia {
 	}
 
 	/**
-	 * TODO
+	 * Method for get infobox of element to compare
+	 * 
+	 * @param pageid
+	 * 			pageid of element
+	 * @return map
+	 * 			Object with infobox
 	 */
 	public static Map<String, String> getContentWP(String pageid) {
 		String url = "https://www.wikipedia.org/w/api.php?action=query&pageids=" + pageid

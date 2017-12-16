@@ -9,7 +9,7 @@ package fr.istic.pdl.groupe6.msw;
  * @version 1.0
  * @since 2017-10-31
  * 
- * 
+ *        Class for reading configuration's file
  * 
  */
 

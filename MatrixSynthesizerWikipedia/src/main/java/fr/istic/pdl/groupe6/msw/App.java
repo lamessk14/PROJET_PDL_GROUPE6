@@ -1,6 +1,5 @@
 package fr.istic.pdl.groupe6.msw;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -23,7 +22,10 @@ import java.util.Scanner;
 
 public class App {
 	/**
-	 * TODO
+	 * Main method
+	 * 
+	 * @param args
+	 * 			Main method
 	 */
 	public static void main(String[] args) {
 //		ReadConfigFile fileInPut = new ReadConfigFile();
@@ -46,31 +48,37 @@ public class App {
 		
 		switch(option) {
 		case 1:
-			System.out.println("*** Wikipedia ***");
-
+			System.out.println("*** Wikipedia *** \nLoading...");
 			ParserWikipedia parserWp = new ParserWikipedia();
-	//		parser.searchWP("Cartagena"); TODO add disambiguation
 			
-			Map<String, String> map1 = parserWp.getContentWP("5222");
-			// System.out.println(map1);
-			Map<String, String> map2 = parserWp.getContentWP("5843419");
-			// System.out.println(map2);
-	
-			Map<Integer, Map> comp = new LinkedHashMap<Integer, Map>();
-	
-			assert (map1.isEmpty());
-			comp.put(5222, map1);
-			comp.put(5843419, map2);
+			// parser.searchWP("Cartagena");
+			
+			// TODO add disambiguation, must return a list like listToCompare
+			
+			List<String> listToCompare = new ArrayList<String>();
+			listToCompare.add("5222");
+			listToCompare.add("5843419");
+			
+			Map<Integer, Map> compWp = new LinkedHashMap<Integer, Map>();
+			String id;
+			
+			for(Iterator it = listToCompare.iterator(); it.hasNext();) {
+				id = (String) it.next();
+				Map<String, String> mapWd = parserWp.getContentWP(id);
+				assert (!mapWd.isEmpty());
+				compWp.put(Integer.parseInt(id), mapWd);
+				System.out.println(mapWd);
+			}
 		
 			Compare compare = new Compare();
 	
-			int sizeIntersection = compare.getIntersection(comp).size();
-			float percentageMatch = compare.getPercentageMatch(comp) * 100;
+			int sizeIntersection = compare.getIntersection(compWp).size();
+			float percentageMatch = compare.getPercentageMatch(compWp) * 100;
 	
 			System.out.println("Le % de coïncidence est " + String.format("%.1f", percentageMatch) + "% et le "
 					+ "nombre de paramètre en " + "commun est " + sizeIntersection);
 	
-			if (compare.checkAllParameterInfobox(comp)) {
+			if (compare.checkAllParameterInfobox(compWp)) {
 				System.out.println("\nVeuillez selectionner l'option pour le nombre de paramètres que vous "
 						+ "voulez avoir dans le fichier CSV ? \n" + "[1] Tous le paramètres\n"
 						+ "[2] Les paramètres en commun\n" + "[a] Annuler");
@@ -83,37 +91,26 @@ public class App {
 			break;
 			
 		case 2:
-			System.out.println("*** Wikidata ***");
+			System.out.println("*** Wikidata *** \nLoading...");
 			ParserWikidata parserWd = new ParserWikidata();
 			
-			// TODO add disambiguation, must return a list like listToCompare
+			// TODO add disambiguation, must return a list like listToCompare2
 //			parser.searchWD("Cartagena");
-			List<String> listToCompare = new ArrayList<String>();
-			listToCompare.add("Q739");
-			listToCompare.add("Q142");
-			
-//			Map<String, Map> compWd = new LinkedHashMap<String, Map>();
-//			String id;
-//			
-//			for(Iterator it = listToCompare.iterator(); it.hasNext();) {
-				// TODO check first character
-//				id = (String) it.next();
-//				id = Integer.parseInt((String) it.next(););
-//				Map<String, String> mapWd = parserWd.getContentWD(id);
-//				assert (mapWd.isEmpty());
-//				compWd.put(id, mapWd);
-//				System.out.println(mapWd);
-//			}
+			List<String> listToCompare2 = new ArrayList<String>();
+			listToCompare2.add("Q739");
+			listToCompare2.add("Q142");
 			
 			Map<Integer, Map> compWd = new LinkedHashMap<Integer, Map>();
+			String id2 = "";
 			
-			Map<String, String> mapWd1 = parserWd.getContentWD("Q739");
-			System.out.println(mapWd1);
-			Map<String, String> mapWd2 = parserWd.getContentWD("Q142");
-			System.out.println(mapWd2);			
-
-			compWd.put(5222, mapWd1);
-			compWd.put(5843419, mapWd2);
+			for(Iterator it = listToCompare2.iterator(); it.hasNext();) {
+				assert (id2.charAt(0) == 'Q');
+				id2 = (String) it.next();
+				Map<String, String> mapWd = parserWd.getContentWD(id2);
+				assert (!mapWd.isEmpty());
+				compWd.put(Integer.parseInt(id2.substring(1)), mapWd);
+				System.out.println(mapWd);
+			}
 			
 			Compare compareWd = new Compare();
 			
