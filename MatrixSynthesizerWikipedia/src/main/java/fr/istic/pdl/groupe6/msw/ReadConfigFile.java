@@ -24,19 +24,19 @@ public class ReadConfigFile {
 	List<String> listeAComparer = new ArrayList<String>();
 
 	public List<String> getList() {
-		String fichier = "configFile.json";
+
 		try {
-			InputStream ips = new FileInputStream(fichier);
-			InputStreamReader ipsr = new InputStreamReader(ips);
-			BufferedReader br = new BufferedReader(ipsr);
+			File entree = new File("configFile.json");
+			BufferedReader br = new BufferedReader(new FileReader(entree));
 			String ligne;
+
 			while ((ligne = br.readLine()) != null) {
 				listeAComparer.add(ligne);
-
 			}
 
 			br.close();
-		} catch (Exception e) {
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			System.out.println(e.toString());
 		}
 		return listeAComparer;
