@@ -44,7 +44,7 @@ public class App {
 		try {
 			option = sc.nextInt();
 		} catch (Exception e) {}
-		sc.close();
+		
 		
 		switch(option) {
 		case 1:
@@ -81,10 +81,27 @@ public class App {
 			if (compare.checkAllParameterInfobox(compWp)) {
 				System.out.println("\nVeuillez selectionner l'option pour le nombre de paramètres que vous "
 						+ "voulez avoir dans le fichier CSV ? \n" + "[1] Tous le paramètres\n"
-						+ "[2] Les paramètres en commun\n" + "[a] Annuler");
-				System.out.print("Creating file CSV .... ");
-				// TODO code class that create file CSV from variable comp
-				System.out.println("done !");
+						+ "[2] Les paramètres en commun\n" + "[5] Annuler");
+				
+				//sc = new Scanner(System.in);
+				int option1 = 0;
+				try {
+					option1 = sc.nextInt();
+				} catch (Exception e) {System.out.println(e);}
+				
+				switch(option1) {
+				case 1:
+					System.out.println("Création du fichier CSV avec tous les paramètres ... ");
+					// TODO code class that create file CSV from variable comp
+					System.out.println("done !");
+					break;
+				case 2:
+					System.out.println("Création du fichier CSV avec les paramètres en commun ... ");
+					break;
+				default:
+					System.out.println("Operation annulée");
+					break;
+				}
 			} else {
 				System.out.println("Un ou plusieurs elements de votre choix ne peuvent pas être comparés .");
 			}
@@ -136,6 +153,7 @@ public class App {
 			System.out.println("L'option saisie n'existe pas.");
 				
 		}
+		sc.close();
 
 	}
 }
