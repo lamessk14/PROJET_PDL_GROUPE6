@@ -28,6 +28,7 @@ public class App {
 	 * 			Main method
 	 */
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 //		ReadConfigFile fileInPut = new ReadConfigFile();
 //		List<String> listeAComparer = fileInPut.getList();
 //		TraitetementDisambiguation traitementFile = new TraitetementDisambiguation();
@@ -39,7 +40,7 @@ public class App {
 		System.out.println ("Veuillez indiquer le moteur de recherche que vous voulez utiliser :" 
 				+ "\n[1] Wikipedia"
 				+ "\n[2] Wikidata");
-		Scanner sc = new Scanner(System.in);
+		
 		int option = 0;
 		try {
 			option = sc.nextInt();
@@ -83,7 +84,6 @@ public class App {
 						+ "voulez avoir dans le fichier CSV ? \n" + "[1] Tous le paramètres\n"
 						+ "[2] Les paramètres en commun\n" + "[5] Annuler");
 				
-				//sc = new Scanner(System.in);
 				int option1 = 0;
 				try {
 					option1 = sc.nextInt();
@@ -97,6 +97,7 @@ public class App {
 					break;
 				case 2:
 					System.out.println("Création du fichier CSV avec les paramètres en commun ... ");
+					// TODO code class that create file CSV from variable comp
 					break;
 				default:
 					System.out.println("Operation annulée");
