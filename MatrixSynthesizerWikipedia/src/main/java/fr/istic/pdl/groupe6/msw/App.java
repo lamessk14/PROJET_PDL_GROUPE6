@@ -1,6 +1,8 @@
 package fr.istic.pdl.groupe6.msw;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -92,7 +94,7 @@ public class App {
 				switch(option1) {
 				case 1:
 					System.out.println("Création du fichier CSV avec tous les paramètres ... ");
-					// TODO code class that create file CSV from variable comp
+					// TODO code class that create file CSV from variable comp					
 					System.out.println("done !");
 					break;
 				case 2:
