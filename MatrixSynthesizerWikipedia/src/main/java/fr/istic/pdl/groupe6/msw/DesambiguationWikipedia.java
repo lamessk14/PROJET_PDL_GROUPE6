@@ -12,7 +12,6 @@ public class DesambiguationWikipedia {
 	ParserWikipedia parser;
 	List<String> listeComparaison = new ArrayList<String>();
 	ReadConfigFile fileInPut = new ReadConfigFile();
-	Scanner scanner = new Scanner(System.in);
 
 	@SuppressWarnings("rawtypes")
 	public List<String> getListPourComparaion(List<String> listeAComparer) {
@@ -35,7 +34,7 @@ public class DesambiguationWikipedia {
 
 				System.out.println("Veuillez faire votre choix");
 
-				int keyValue = scanner.nextInt();
+				int keyValue = App.sc.nextInt();
 
 				Iterator iterator = map.entrySet().iterator();
 
@@ -50,10 +49,8 @@ public class DesambiguationWikipedia {
 
 			}
 		}
-		scanner.close();
 
 		System.out.println(listeComparaison);
-
 		for (String pageid : listeComparaison) {
 			System.out.println(ParserWikipedia.getContentWP(pageid));
 		}
