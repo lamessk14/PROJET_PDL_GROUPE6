@@ -90,7 +90,7 @@ public class ParserWikipedia {
 			String jsonText = readAll(rd);
 
 			JsonElement rootObj = new JsonParser().parse(jsonText);
-			idpage = null; // TODO Il faut récupérer la clé
+			idpage = null;
 
 			JsonElement disambiguation1 = getValues(rootObj, "query/pages/");
 			JsonObject root = disambiguation1.getAsJsonObject();
@@ -168,7 +168,10 @@ public class ParserWikipedia {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
 			try {
 				if (is != null)
 					is.close();

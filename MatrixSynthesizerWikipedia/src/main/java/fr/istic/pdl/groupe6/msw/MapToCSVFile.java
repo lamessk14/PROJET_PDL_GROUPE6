@@ -104,7 +104,7 @@ public class MapToCSVFile {
 	}
 	
 	/**
-	 * Method for creating CSV file without parameters in common
+	 * Method for creating CSV file with all parameters
 	 * 
 	 * @param map
 	 * 			Map<Integer, Map>

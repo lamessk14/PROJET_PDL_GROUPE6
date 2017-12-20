@@ -35,8 +35,6 @@ public class ConfigFile {
 	 * TODO
 	 */
 	public String getTitles() {
-		System.out.print("Loading configuration file...");
-		System.out.println("    File loaded successfully.");
 		return this.pageName;
 	}
 }

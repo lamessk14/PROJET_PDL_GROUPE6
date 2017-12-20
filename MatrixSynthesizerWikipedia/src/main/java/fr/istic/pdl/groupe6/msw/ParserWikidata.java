@@ -118,8 +118,6 @@ public class ParserWikidata {
 		try {
 			JsonElement rootObj = dataRequest(url);
 			JsonElement disambiguation = getValues(rootObj, "search");
-			System.out.println(disambiguation);
-			// TODO check "id" and "label", in addition, a description could be add it
 			
 			JsonArray msg = (JsonArray) disambiguation;
 
