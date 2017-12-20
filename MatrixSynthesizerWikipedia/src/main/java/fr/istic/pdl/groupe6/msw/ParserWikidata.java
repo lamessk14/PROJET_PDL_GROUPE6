@@ -103,7 +103,7 @@ public class ParserWikidata {
 	/**
 	 * TODO
 	 */
-	public static void searchWD(String search) {
+	public void searchWD(String search) {
 		String url = "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=" + search
 				+ "&language=en&format=json";
 		JsonElement rootObj = dataRequest(url);

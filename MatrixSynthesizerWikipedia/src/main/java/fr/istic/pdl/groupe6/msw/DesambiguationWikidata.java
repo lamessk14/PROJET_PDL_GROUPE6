@@ -1,4 +1,4 @@
-package fr.istic.pdl.wms.groupe6.mediawikitest;
+package fr.istic.pdl.groupe6.msw;
 
 import java.util.ArrayList;
 import java.util.HashMap;
