@@ -46,7 +46,7 @@ public class App {
 			System.out.println("*** Wikipedia *** \nLoading...");
 			ParserWikipedia parserWp = new ParserWikipedia();
 			
-			//add desambiguation wp
+			// add desambiguation wp
 			ReadConfigFile fileInPut = new ReadConfigFile();
 			List<String> listeAComparer = fileInPut.getList();
 			DesambiguationWikipedia traitementFile = new DesambiguationWikipedia();
@@ -54,16 +54,16 @@ public class App {
 			
 			Map<Integer, Map> compWp = new LinkedHashMap<Integer, Map>();
 			String id;
-			//Variable qui r�cup�re le contenu final de mapWd
-			Map<String, String> mapToCsv = null;
+//			// Variable qui récupére le contenu final de mapWd --> wrong
+//			Map<String, String> mapToCsv = null;
 			
 			for(Iterator it = listToCompare.iterator(); it.hasNext();) {
 				id = (String) it.next();
 				Map<String, String> mapWd = parserWp.getContentWP(id);
 				assert (!mapWd.isEmpty());
 				compWp.put(Integer.parseInt(id), mapWd);
-				System.out.println(mapWd);
-				mapToCsv = mapWd;
+//				System.out.println(mapWd);
+//				mapToCsv = mapWd;
 			}
 		
 			Compare compare = new Compare();
@@ -88,31 +88,31 @@ public class App {
 				case 1:
 					System.out.println("Création du fichier CSV avec tous les paramètres ... ");
 					// TODO code class that create file CSV from variable comp
-					ToCsv toCsv = new ToCsv();
-			        Set<String> resultComp = compare.getIntersection(compWp);
-					String [] header = resultComp.toArray(new String[resultComp.size()]);
-					
-			        try {
-						toCsv.writeWithCsvMapWriter(mapToCsv,header);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+//					ToCsv toCsv = new ToCsv();
+//			        Set<String> resultComp = compare.getIntersection(compWp);
+//					String [] header = resultComp.toArray(new String[resultComp.size()]);
+//					
+//			        try {
+//						toCsv.writeWithCsvMapWriter(mapToCsv,header);
+//					} catch (Exception e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 					System.out.println("done !");
 					break;
 				case 2:
 					System.out.println("Création du fichier CSV avec les paramètres en commun ... ");
 					// TODO code class that create file CSV from variable comp
-					ToCsv toCsv1 = new ToCsv();
-			        Set<String> resultComp1 = compare.getIntersection(compWp);
-					String [] header1 = resultComp1.toArray(new String[resultComp1.size()]);
-					
-			        try {
-						toCsv1.writeWithCsvMapWriter(mapToCsv,header1);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+//					ToCsv toCsv1 = new ToCsv();
+//			        Set<String> resultComp1 = compare.getIntersection(compWp);
+//					String [] header1 = resultComp1.toArray(new String[resultComp1.size()]);
+//					
+//			        try {
+//						toCsv1.writeWithCsvMapWriter(mapToCsv,header1);
+//					} catch (Exception e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
 					break;
 				default:
 					System.out.println("Operation annulée");
@@ -135,8 +135,8 @@ public class App {
 			
 			Map<Integer, Map> compWd = new LinkedHashMap<Integer, Map>();
 			String id2 = "";
-			//Variable qui r�cup�re le contenu final de mapWd
-			Map<String, String> mapToCsv2 = null;
+//			//Variable qui récupére le contenu final de mapWd  --> wrong
+//			Map<String, String> mapToCsv2 = null;
 			
 			for(Iterator it = listToCompare2.iterator(); it.hasNext();) {
 				assert (id2.charAt(0) == 'Q');
@@ -144,8 +144,8 @@ public class App {
 				Map<String, String> mapWd = parserWd.getContentWD(id2);
 				assert (!mapWd.isEmpty());
 				compWd.put(Integer.parseInt(id2.substring(1)), mapWd);
-				System.out.println(mapWd);
-				mapToCsv2 = mapWd;
+//				System.out.println(mapWd);
+//				mapToCsv2 = mapWd;
 			}
 			
 			Compare compareWd = new Compare();
@@ -162,16 +162,16 @@ public class App {
 						+ "[2] Les paramètres en commun\n" + "[a] Annuler");
 				System.out.print("Creating file CSV .... ");
 				// TODO code class that create file CSV from variable comp
-				ToCsv toCsv1 = new ToCsv();
-		        Set<String> resultComp1 = compareWd.getIntersection(compWd);
-				String [] header1 = resultComp1.toArray(new String[resultComp1.size()]);
-				
-		        try {
-					toCsv1.writeWithCsvMapWriter(mapToCsv2,header1);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+//				ToCsv toCsv1 = new ToCsv();
+//		        Set<String> resultComp1 = compareWd.getIntersection(compWd);
+//				String [] header1 = resultComp1.toArray(new String[resultComp1.size()]);
+//				
+//		        try {
+//					toCsv1.writeWithCsvMapWriter(mapToCsv2,header1);
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 				System.out.println("done !");
 			} else {
 				System.out.println("Un ou plusieurs elements de votre choix ne peuvent pas être comparés .");
