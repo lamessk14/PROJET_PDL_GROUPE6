@@ -54,7 +54,7 @@ public class App {
 			
 			Map<Integer, Map> compWp = new LinkedHashMap<Integer, Map>();
 			String id;
-			//Variable qui r�cup�re le contenu final de mapWd
+			//Variable qui récupère le contenu final de mapWd
 			Map<String, String> mapToCsv = null;
 			
 			for(Iterator it = listToCompare.iterator(); it.hasNext();) {
