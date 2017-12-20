@@ -1,17 +1,18 @@
-package fr.istic.pdl.groupe6.msw;
+package fr.istic.pdl.wms.groupe6.mediawikitest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class DesambiguationWikipedia {
 
 	ParserWikipedia parser;
 	List<String> listeComparaison = new ArrayList<String>();
 	ReadConfigFile fileInPut = new ReadConfigFile();
+	//Scanner scanner = new Scanner(System.in);
 
 	@SuppressWarnings("rawtypes")
 	public List<String> getListPourComparaion(List<String> listeAComparer) {
@@ -48,11 +49,9 @@ public class DesambiguationWikipedia {
 				}
 
 			}
+		catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		System.out.println(listeComparaison);
-		for (String pageid : listeComparaison) {
-			System.out.println(ParserWikipedia.getContentWP(pageid));
 		}
 
 		return listeComparaison;
