@@ -1,29 +1,17 @@
-package fr.istic.pdl.groupe6.msw;
+package fr.istic.pdl.wms.groupe6.mediawikitest;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 
- * PDL MIAGE 1718, Project #3 (MatrixSynthesizerWikipedia), Group 6
- * 
- * @author HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya,
- *         TCHIDIME Hugues, NGOUALEM Alvine
- * @version 1.0
- * @since 2017-10-31
- * 
- * 
- * 
- */
-
 public class ReadConfigFile {
-	List<String> listeAComparer = new ArrayList<String>();
-
-	public List<String> getList() {
+	List<String> listeToCompareWP = new ArrayList<String>();
+	List<String> listeToCompareWD = new ArrayList<String>();
+	
+	public List<String> getListWP() {
 
 		try {
 			File entree = new File("configFile.json");
@@ -31,7 +19,7 @@ public class ReadConfigFile {
 			String ligne;
 
 			while ((ligne = br.readLine()) != null) {
-				listeAComparer.add(ligne);
+				listeToCompareWP.add(ligne);
 			}
 
 			br.close();
@@ -39,6 +27,25 @@ public class ReadConfigFile {
 			// TODO Auto-generated catch block
 			System.out.println(e.toString());
 		}
-		return listeAComparer;
+		return listeToCompareWP;
+	}
+	
+	public List<String> getListWD() {
+
+		try {
+			File entree = new File("configFileWD.json");
+			BufferedReader br = new BufferedReader(new FileReader(entree));
+			String ligne;
+
+			while ((ligne = br.readLine()) != null) {
+				listeToCompareWD.add(ligne);
+			}
+
+			br.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.toString());
+		}
+		return listeToCompareWD;
 	}
 }
