@@ -22,7 +22,6 @@ import java.util.Scanner;
 
 public class TraitetementDisambiguation {
 
-	ConfigFile configFile1;
 	ParserWikipedia parser;
 	List<String> listePourComparaison = new ArrayList<String>();
 	ReadConfigFile fileInPut = new ReadConfigFile();
