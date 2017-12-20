@@ -1,4 +1,4 @@
-package fr.istic.pdl.groupe6.msw;
+package fr.istic.pdl.wms.groupe6.mediawikitest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -33,7 +35,7 @@ import com.google.gson.JsonParser;
  */
 
 public class ParserWikidata {
-
+	
 	private HashMap<Integer, String> listePage;
 	private HashMap<Integer, String> listePageId;
 	private HashMap<Integer, String> listePages;
