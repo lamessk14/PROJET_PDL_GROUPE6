@@ -24,6 +24,7 @@ import java.util.Set;
  */
 
 public class App {
+	public static Scanner sc = new Scanner(System.in);
 	/**
 	 * Main method
 	 * 
@@ -31,14 +32,6 @@ public class App {
 	 * 			Main method
 	 */
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-//		ReadConfigFile fileInPut = new ReadConfigFile();
-//		List<String> listeAComparer = fileInPut.getList();
-//		TraitetementDisambiguation traitementFile = new TraitetementDisambiguation();
-//		traitementFile.getListPourComparaion(listeAComparer);
-//
-//		ConfigFile configFile = new ConfigFile();
-//		String search = configFile.getTitles();
 		
 		System.out.println ("Veuillez indiquer le moteur de recherche que vous voulez utiliser :" 
 				+ "\n[1] Wikipedia"
@@ -55,13 +48,11 @@ public class App {
 			System.out.println("*** Wikipedia *** \nLoading...");
 			ParserWikipedia parserWp = new ParserWikipedia();
 			
-			// parser.searchWP("Cartagena");
-			
-			// TODO add disambiguation, must return a list like listToCompare
-			
-			List<String> listToCompare = new ArrayList<String>();
-			listToCompare.add("5222");
-			listToCompare.add("5843419");
+			//add desambiguation wp
+			ReadConfigFile fileInPut = new ReadConfigFile();
+			List<String> listeAComparer = fileInPut.getList();
+			DesambiguationWikipedia traitementFile = new DesambiguationWikipedia();
+			List<String> listToCompare= traitementFile.getListPourComparaion(listeAComparer);
 			
 			Map<Integer, Map> compWp = new LinkedHashMap<Integer, Map>();
 			String id;
