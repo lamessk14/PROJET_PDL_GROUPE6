@@ -1,8 +1,6 @@
 package fr.istic.pdl.groupe6.msw;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -73,13 +71,13 @@ public class App {
 			int sizeIntersection = compare.getIntersection(compWp).size();
 			float percentageMatch = compare.getPercentageMatch(compWp) * 100;
 	
-			System.out.println("Le % de co�ncidence est " + String.format("%.1f", percentageMatch) + "% et le "
-					+ "nombre de param�tre en " + "commun est " + sizeIntersection);
+			System.out.println("Le % de coïncidence est " + String.format("%.1f", percentageMatch) + "% et le "
+					+ "nombre de paramètre en " + "commun est " + sizeIntersection);
 	
 			if (compare.checkAllParameterInfobox(compWp)) {
-				System.out.println("\nVeuillez selectionner l'option pour le nombre de param�tres que vous "
-						+ "voulez avoir dans le fichier CSV ? \n" + "[1] Tous le param�tres\n"
-						+ "[2] Les param�tres en commun\n" + "[5] Annuler");
+				System.out.println("\nVeuillez selectionner l'option pour le nombre de paramètres que vous "
+						+ "voulez avoir dans le fichier CSV ? \n" + "[1] Tous le paramètres\n"
+						+ "[2] Les paraètres en commun\n" + "[5] Annuler");
 				
 				int option1 = 0;
 				try {
@@ -88,7 +86,7 @@ public class App {
 				
 				switch(option1) {
 				case 1:
-					System.out.println("Cr�ation du fichier CSV avec tous les param�tres ... ");
+					System.out.println("Création du fichier CSV avec tous les paramètres ... ");
 					// TODO code class that create file CSV from variable comp
 					ToCsv toCsv = new ToCsv();
 			        Set<String> resultComp = compare.getIntersection(compWp);
@@ -103,7 +101,7 @@ public class App {
 					System.out.println("done !");
 					break;
 				case 2:
-					System.out.println("Cr�ation du fichier CSV avec les param�tres en commun ... ");
+					System.out.println("Création du fichier CSV avec les paramètres en commun ... ");
 					// TODO code class that create file CSV from variable comp
 					ToCsv toCsv1 = new ToCsv();
 			        Set<String> resultComp1 = compare.getIntersection(compWp);
@@ -117,11 +115,11 @@ public class App {
 					}
 					break;
 				default:
-					System.out.println("Operation annul�e");
+					System.out.println("Operation annulée");
 					break;
 				}
 			} else {
-				System.out.println("Un ou plusieurs elements de votre choix ne peuvent pas �tre compar�s .");
+				System.out.println("Un ou plusieurs elements de votre choix ne peuvent pas être comparés .");
 			}
 			break;
 			
@@ -155,13 +153,13 @@ public class App {
 			int sizeIntersectionWd = compareWd.getIntersection(compWd).size();
 			float percentageMatchWd = compareWd.getPercentageMatch(compWd) * 100;
 	
-			System.out.println("Le % de co�ncidence est " + String.format("%.1f", percentageMatchWd) + "% et le "
-					+ "nombre de param�tre en " + "commun est " + sizeIntersectionWd);
+			System.out.println("Le % de coïncidence est " + String.format("%.1f", percentageMatchWd) + "% et le "
+					+ "nombre de paramétre en " + "commun est " + sizeIntersectionWd);
 			
 			if (compareWd.checkAllParameterInfobox(compWd)) {
-				System.out.println("\nVeuillez selectionner l'option pour le nombre de param�tres que vous "
-						+ "voulez avoir dans le fichier CSV ? \n" + "[1] Tous le param�tres\n"
-						+ "[2] Les param�tres en commun\n" + "[a] Annuler");
+				System.out.println("\nVeuillez selectionner l'option pour le nombre de paramètres que vous "
+						+ "voulez avoir dans le fichier CSV ? \n" + "[1] Tous le paramètres\n"
+						+ "[2] Les paramètres en commun\n" + "[a] Annuler");
 				System.out.print("Creating file CSV .... ");
 				// TODO code class that create file CSV from variable comp
 				ToCsv toCsv1 = new ToCsv();
@@ -176,7 +174,7 @@ public class App {
 				}
 				System.out.println("done !");
 			} else {
-				System.out.println("Un ou plusieurs elements de votre choix ne peuvent pas �tre compar�s .");
+				System.out.println("Un ou plusieurs elements de votre choix ne peuvent pas être comparés .");
 			}
 			break;
 			

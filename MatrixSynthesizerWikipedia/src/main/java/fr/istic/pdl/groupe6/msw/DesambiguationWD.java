@@ -1,4 +1,4 @@
-package fr.istic.pdl.wms.groupe6.mediawikitest;
+package fr.istic.pdl.groupe6.msw;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class TraitementDesambiguationWD {
+public class DesambiguationWD {
 	ParserWikidata parserWD;
 	List<String> listeComparaisonWD = new ArrayList<String>();
 	ReadConfigFile fileInPut = new ReadConfigFile();
