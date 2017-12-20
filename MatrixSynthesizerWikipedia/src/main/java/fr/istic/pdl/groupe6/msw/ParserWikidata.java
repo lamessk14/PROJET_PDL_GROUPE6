@@ -34,6 +34,11 @@ import com.google.gson.JsonParser;
 
 public class ParserWikidata {
 
+	private HashMap<Integer, String> listePage;
+	private HashMap<Integer, String> listePageId;
+	private HashMap<Integer, String> listePages;
+	String search;
+	String idpage;
 	/**
 	 * Request to Wikidata
 	 * 
@@ -52,6 +57,8 @@ public class ParserWikidata {
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		}catch(Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -103,13 +110,63 @@ public class ParserWikidata {
 	/**
 	 * TODO
 	 */
-	public static void searchWD(String search) {
+	public HashMap<Integer, String> searchWD(String search) {
 		String url = "https://www.wikidata.org/w/api.php?action=wbsearchentities&search=" + search
 				+ "&language=en&format=json";
-		JsonElement rootObj = dataRequest(url);
-		JsonElement disambiguation = getValues(rootObj, "search");
-		System.out.println(disambiguation);
-		// TODO check "id" and "label", in addition, a description could be add it
+		InputStream is = null;
+		try {
+			JsonElement rootObj = dataRequest(url);
+			JsonElement disambiguation = getValues(rootObj, "search");
+			System.out.println(disambiguation);
+			// TODO check "id" and "label", in addition, a description could be add it
+			
+			JsonArray msg = (JsonArray) disambiguation;
+
+			Iterator<JsonElement> iterator = msg.iterator();
+
+			// valeur numérique
+			int i = 0;
+			String pageName;
+			String pageId;
+			// HasMap : pour récupérer la liste des pages
+			listePage = new HashMap<Integer, String>();
+			listePageId = new HashMap<Integer, String>();
+			listePages = new HashMap<Integer, String>();
+			while (iterator.hasNext()) {
+				// recupère chaque page ambigu
+				pageName = getValues(iterator.next(), "label").getAsString();
+				// Ajout dans un HashMap
+				listePage.put(i, pageName);
+				// affichage de la liste des pages
+				System.out.println(i + " " + pageName);
+				i++;
+			}
+
+			int j = 0;
+			Iterator<JsonElement> iterator1 = msg.iterator();
+			while (iterator1.hasNext()) {
+				// recupère chaque page ambigu
+				pageId = getValues(iterator1.next(), "id").getAsString();
+				// Ajout dans un HashMap
+				listePageId.put(j, pageId);
+				// affichage de la liste des pages
+				// System.out.println(j+" "+pageId);
+				j++;
+			}
+
+			listePages.putAll(listePage);
+			listePages.putAll(listePageId);
+			
+		} finally {
+			try {
+				if (is != null)
+					is.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return listePages;
 	}
 
 	/**
