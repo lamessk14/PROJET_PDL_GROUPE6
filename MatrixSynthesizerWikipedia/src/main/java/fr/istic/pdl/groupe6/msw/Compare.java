@@ -25,7 +25,7 @@ public class Compare {
 	 * Method that checks if all infobox are not empty
 	 * 
 	 * @param comp
-	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            Variable of type Map, Key = pageid, value =
 	 *            parameters of infobox
 	 * @return res Return true if all infobox are not empty
 	 */
@@ -47,7 +47,7 @@ public class Compare {
 	 * Method that checks if each element has the infobox parameter
 	 * 
 	 * @param comp
-	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            Variable of type Map, Key = pageid, value =
 	 *            parameters of infobox
 	 * @return res True for each element if it contains the infobox parameter
 	 */
@@ -69,7 +69,7 @@ public class Compare {
 	 * Method that checks if all elements have the infobox parameter
 	 * 
 	 * @param comp
-	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            Variable of type Map, Key = pageid, value =
 	 *            parameters of infobox
 	 * @return res True for all elements have the infobox parameter
 	 */
@@ -90,9 +90,9 @@ public class Compare {
 	 * Method that return the infobox parametre for each element
 	 * 
 	 * @param comp
-	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            Variable of type Map, Key = pageid, value =
 	 *            parameters of infobox
-	 * @return res Map<Integer, String>, Key = pageid, Value = content of infobox
+	 * @return res Map, Key = pageid, Value = content of infobox
 	 *         parameter
 	 */
 	public Map<Integer, String> getContentParameterInfobox(Map<Integer, Map> comp) {
@@ -109,9 +109,9 @@ public class Compare {
 	 * Method that return the number of parameter for each infobox
 	 * 
 	 * @param comp
-	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            Variable of type Map, Key = pageid, value =
 	 *            parameters of infobox
-	 * @return res Map<Integer, Integer>, Key = pageid, Value = number of parameters
+	 * @return res Map, Key = pageid, Value = number of parameters
 	 */
 	public Map<Integer, Integer> getNumParametres(Map<Integer, Map> comp) {
 		Map<Integer, Integer> res = new LinkedHashMap<Integer, Integer>();
@@ -127,7 +127,7 @@ public class Compare {
 	 * Method that returns the parameters in common between all elements
 	 * 
 	 * @param comp
-	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            Variable of type Map, Key = pageid, value =
 	 *            parameters of infobox
 	 * @return res Parameter in common
 	 */
@@ -164,7 +164,7 @@ public class Compare {
 	 * Method that calculates the match percentage between the elements
 	 * 
 	 * @param comp
-	 *            Variable of type Map<Integer, Map>, Key = pageid, value =
+	 *            Variable of type Map, Key = pageid, value =
 	 *            parameters of infobox
 	 * @return res Match percentage
 	 */

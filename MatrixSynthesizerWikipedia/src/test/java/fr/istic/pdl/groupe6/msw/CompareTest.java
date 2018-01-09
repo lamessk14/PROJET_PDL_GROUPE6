@@ -29,13 +29,6 @@ public class CompareTest {
 	/**
 	 * Method for testing checkParameterInfobox()
 	 * 
-	 * @param m1
-	 *            premier infobox
-	 * @param m2
-	 *            deuxième infobox
-	 * @param m3
-	 *            deuxième infobox
-	 * @return true if All infobox have the infobox parameter
 	 */
 	@Test
 	public void testCheckParameterInfobox() {
@@ -57,14 +50,6 @@ public class CompareTest {
 
 	/**
 	 * Method for testing checkParameterInfobox()
-	 * 
-	 * @param m1
-	 *            premier infobox
-	 * @param m2
-	 *            deuxième infobox
-	 * @param m3
-	 *            troisième infobox : without parameter "infobox"
-	 * @return true if one infobox does not have the infobox parameter
 	 */
 	@Test
 	public void testCheckParameterInfobox2() {

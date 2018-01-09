@@ -30,7 +30,7 @@ public class MapToCSVFile {
 	 * Method for creating CSV file with parameters in common
 	 * 
 	 * @param map
-	 * 			Map<Integer, Map>
+	 * 			Map
 	 * @throws IOException 
 	 */
 	public void mapToCSVComplex(Map<Integer, Map> map) throws IOException {
@@ -114,7 +114,7 @@ public class MapToCSVFile {
 	 * Method for creating CSV file with all parameters
 	 * 
 	 * @param map
-	 * 			Map<Integer, Map>
+	 * 			Map
 	 * @throws IOException 
 	 */
 	public void mapToCSV(Map<Integer, Map> map) throws IOException {

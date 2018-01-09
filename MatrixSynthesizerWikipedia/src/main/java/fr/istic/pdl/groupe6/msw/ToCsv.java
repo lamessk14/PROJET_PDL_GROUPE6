@@ -12,7 +12,7 @@ import org.supercsv.prefs.CsvPreference;
  * 
  * PDL MIAGE 1718, Project #3 (MatrixSynthesizerWikipedia), Group 6
  * 
- * @author HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-Agnès, ZOHOUN Nellya,
+ * @author HERNANDEZ Maykol, ADDA Raoul, MACKONGO Louise-AgnÃ©s, ZOHOUN Nellya,
  *         TCHIDIME Hugues, NGOUALEM Alvine
  * @version 1.0
  * @since 2017-10-31
