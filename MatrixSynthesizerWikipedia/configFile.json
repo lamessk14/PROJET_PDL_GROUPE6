@@ -1,2 +1,10 @@
-Colombia
-France
+{
+    "ListNom": 
+	[
+	"Benin","Togo","Mali"
+	]
+	"ListId": 
+	[
+	26667,5843419,47570700
+	]
+}
