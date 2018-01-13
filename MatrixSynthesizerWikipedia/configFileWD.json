@@ -1,10 +1,6 @@
 {
-    "ListNom": 
-	[
-	"Benin","Togo"
-	]
-	"ListId": 
-	[
-	142,739
-	]
+"ListNom": 
+[
+"Benin","Togo","Mali"
+]
 }
