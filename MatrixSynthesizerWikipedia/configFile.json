@@ -1,10 +1,14 @@
 {
-    "ListNom": 
-	[
-	"Benin","Togo","Mali"
-	]
-	"ListId": 
-	[
-	26667,5843419,47570700
-	]
+"ListNomWikipédia": 
+[
+"Benin","Togo","Mali","Cameroun"
+]
+"ListNomWikidata": 
+[
+"Benin","Togo","Mali","Cameroun"
+]
+"ListId": 
+[
+26667,5843419,47570700
+]
 }
