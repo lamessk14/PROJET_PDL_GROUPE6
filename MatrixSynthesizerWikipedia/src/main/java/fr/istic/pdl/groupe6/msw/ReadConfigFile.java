@@ -23,7 +23,7 @@ public class ReadConfigFile {
 			Object obj = parser.parse(new FileReader("configFile.json"));
 
 			JSONObject jsonObject = (JSONObject) obj;
-			JSONArray listNom = (JSONArray) jsonObject.get("ListNom");
+			JSONArray listNom = (JSONArray) jsonObject.get("ListName");
 			JSONArray listId = (JSONArray) jsonObject.get("ListId");
 
 			Iterator<String> iteratorNom = listNom.iterator();
@@ -49,10 +49,10 @@ public class ReadConfigFile {
 
 		try {
 
-			Object obj = parser.parse(new FileReader("configFileWD.json"));
+			Object obj = parser.parse(new FileReader("configFile.json"));
 
 			JSONObject jsonObject = (JSONObject) obj;
-			JSONArray listNom = (JSONArray) jsonObject.get("ListNom");
+			JSONArray listNom = (JSONArray) jsonObject.get("ListName");
 
 			Iterator<String> iteratorNom = listNom.iterator();
 
