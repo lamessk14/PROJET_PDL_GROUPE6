@@ -20,7 +20,7 @@ public class DesambiguationWikidata {
 
 			try {
 				if (Integer.parseInt(pageName) / 1 == Integer.parseInt(pageName))
-					listeComparaisonWD.add(pageName);
+					listeComparaisonWD.add("Q"+pageName);
 
 			} catch (NumberFormatException e) {
 				ConfigFile configFile = new ConfigFile(pageName);
