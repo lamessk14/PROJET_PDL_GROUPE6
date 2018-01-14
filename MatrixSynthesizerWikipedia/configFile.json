@@ -1,12 +1,15 @@
 {
+"_comment": "liste des noms éléments à comparer Wikipédia ou Wikidata",
 "ListName": 
 [
 "Benin", "Togo", "Cameroon"
 ]
+"_comment": "liste des pages Id Wikipédia",
 "ListIdWikipedia": 
 [
 52825
 ]
+"_comment": "liste des Id Wikidata. il faut saisir uniquement les numéro d'identifiant",
 "ListIdWikidata": 
 [
 739
