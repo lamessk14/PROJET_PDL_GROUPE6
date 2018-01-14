@@ -1,4 +1,4 @@
-package fr.istic.pdl.groupe6.msw;
+package fr.istic.pdl.wms.groupe6.mediawikitest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,9 +31,9 @@ public class DesambiguationWikidata {
 				map = parserWD.searchWD(search);
 
 				System.out.println("Veuillez faire votre choix");
-
+				
 				int keyValue = App.sc.nextInt();
-
+				
 				Iterator iterator = map.entrySet().iterator();
 
 				while (iterator.hasNext()) {

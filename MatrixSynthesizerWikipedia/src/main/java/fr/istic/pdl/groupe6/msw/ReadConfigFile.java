@@ -1,4 +1,4 @@
-package fr.istic.pdl.groupe6.msw;
+package fr.istic.pdl.wms.groupe6.mediawikitest;
 
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -56,15 +56,15 @@ public class ReadConfigFile {
 			JSONArray listId = (JSONArray) jsonObject.get("ListIdWikidata");
 
 			Iterator<String> iteratorNom = listNom.iterator();
-			Iterator<String> iteratorId = listId.iterator();
+			Iterator<Long> iteratorId = listId.iterator();
 
 			while (iteratorNom.hasNext()) {
 				listeToCompareWD.add(iteratorNom.next());
 			}
 
 			while (iteratorId.hasNext()) {
-				// String valId = iteratorId.next().toString();
-				listeToCompareWD.add(iteratorId.next());
+				String valId = iteratorId.next().toString();
+				listeToCompareWD.add(valId);
 			}
 
 		} catch (Exception e) {
