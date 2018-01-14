@@ -53,11 +53,18 @@ public class ReadConfigFile {
 
 			JSONObject jsonObject = (JSONObject) obj;
 			JSONArray listNom = (JSONArray) jsonObject.get("ListName");
+			JSONArray listId = (JSONArray) jsonObject.get("ListIdWikipedia");
 
 			Iterator<String> iteratorNom = listNom.iterator();
+			Iterator<String> iteratorId = listId.iterator();
 
 			while (iteratorNom.hasNext()) {
 				listeToCompareWD.add(iteratorNom.next());
+			}
+
+			while (iteratorId.hasNext()) {
+				// String valId = iteratorId.next().toString();
+				listeToCompareWD.add(iteratorId.next());
 			}
 
 		} catch (Exception e) {
@@ -65,4 +72,4 @@ public class ReadConfigFile {
 		}
 		return listeToCompareWD;
 	}
-}
+
