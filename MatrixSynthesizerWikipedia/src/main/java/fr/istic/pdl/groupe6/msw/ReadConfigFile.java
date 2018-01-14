@@ -24,7 +24,7 @@ public class ReadConfigFile {
 
 			JSONObject jsonObject = (JSONObject) obj;
 			JSONArray listNom = (JSONArray) jsonObject.get("ListName");
-			JSONArray listId = (JSONArray) jsonObject.get("ListId");
+			JSONArray listId = (JSONArray) jsonObject.get("ListIdWikipedia");
 
 			Iterator<String> iteratorNom = listNom.iterator();
 			Iterator<Long> iteratorId = listId.iterator();
@@ -53,7 +53,7 @@ public class ReadConfigFile {
 
 			JSONObject jsonObject = (JSONObject) obj;
 			JSONArray listNom = (JSONArray) jsonObject.get("ListName");
-			JSONArray listId = (JSONArray) jsonObject.get("ListIdWikipedia");
+			JSONArray listId = (JSONArray) jsonObject.get("ListIdWikidata");
 
 			Iterator<String> iteratorNom = listNom.iterator();
 			Iterator<String> iteratorId = listId.iterator();
